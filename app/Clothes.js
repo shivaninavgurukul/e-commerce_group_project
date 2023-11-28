@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Electronics = () => {
+const Clothes = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -58,4 +58,4 @@ const Electronics = () => {
   );
 };
 
-export default Electronics;
+export default Clothes;
