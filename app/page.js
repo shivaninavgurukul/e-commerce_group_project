@@ -5,7 +5,9 @@ import Product from "./Product";
 import Phone from "./Phone";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css'
+import Electronices from "./Electronices"
 import "./globals.css";
+
 import Footer from "./Footer"
 const page=()=>{
   return(
@@ -14,6 +16,7 @@ const page=()=>{
       <Home/><br />
       <Product/><br/>
       <Phone/><br/>
+      <Electronices/><br/>
       <Footer/><br />
     </div>
 
