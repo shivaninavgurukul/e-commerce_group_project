@@ -79,7 +79,10 @@ const Product = () => {
 
   return (
     <div className="product-container">
-      <h1 className="product-title">Featured Books</h1>
+      
+        <h1 className="product-title">Featured Books</h1>
+        <a className="view-all-link">View All</a>
+      
       <div className="product-list">
         {books.map((book) => (
           <div key={book.id} className="product-item">
