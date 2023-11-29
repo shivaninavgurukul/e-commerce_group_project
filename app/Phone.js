@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from 'react';
 
 const Phone = () => {
@@ -5,7 +6,7 @@ const Phone = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUrl = 'https://dummyjson.com/products';
+    const apiUrl = 'https://jsonplaceholder.typicode.com/photos';
 
     const fetchData = async () => {
       try {
@@ -16,10 +17,10 @@ const Phone = () => {
         const data = await response.json();
 
         // Limiting to only 5 products and extracting required fields
-        const formattedData = data.slice(0, 5).map(product => ({
-          title: product.title,
-          description: product.description,
-          image: product.image
+        const formattedData = data.slice(0, 5).map(photo => ({
+          title: `Product ${photo.id}`,
+          description: `Description for Product ${photo.id}`,
+          image: photo.url
         }));
 
         setProducts(formattedData);
@@ -35,7 +36,9 @@ const Phone = () => {
 
   return (
     <div className="product-container">
-      <h1 className="product-title">Featured Products</h1>
+      <h1 className="product-title">Best Phones Product
+        <a href='/#' className='link'>View Link</a>
+      </h1>
       <div className="product-list">
         {loading ? (
           <p>Loading...</p>

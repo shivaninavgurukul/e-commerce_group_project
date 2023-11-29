@@ -6,7 +6,6 @@ import Phone from "./Phone";
 import Clothes from "./Clothes";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css'
-import Electronices from "./Electronices"
 import "./globals.css";
 
 import Footer from "./Footer"

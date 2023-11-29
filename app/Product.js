@@ -80,8 +80,9 @@ const Product = () => {
   return (
     <div className="product-container">
       
-        <h1 className="product-title">Featured Books</h1>
-        <a className="view-all-link">View All</a>
+        <h1 className="product-title">Featured Books
+        <a href='/#' className='link'>View Link</a>
+        </h1>
       
       <div className="product-list">
         {books.map((book) => (

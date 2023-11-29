@@ -37,7 +37,9 @@ const Electronics = () => {
 
   return (
     <div className="product-container">
-      <h1 className="product-title">Featured Categories</h1>
+      <h1 className="product-title">Featured Categories
+      <a href='/#' className='link'>View Link</a>
+      </h1>
       <div className="product-list">
         {loading ? (
           <p>Loading...</p>

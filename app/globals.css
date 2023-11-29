@@ -4,6 +4,10 @@
   padding: 20px;
 }
 
+.link{
+  margin-left:1500px;
+
+}
 .product-title {
   font-size: 24px;
   margin-bottom: 20px;
@@ -40,6 +44,3 @@
   color: #888;
 }
 
-.view-all-link {
-  margin-left: 1738px; 
-}
