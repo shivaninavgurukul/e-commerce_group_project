@@ -17,7 +17,11 @@ const page=()=>{
       <Home/><br />
       <Product/><br/>
       <Phone/><br/>
+<<<<<<< HEAD
+      <Electronices/><br/>
+=======
       <Clothes/><br/>
+>>>>>>> 808e96945e9a797520a517a13675d5706c6ec3c5
       <Footer/><br />
     </div>
 
