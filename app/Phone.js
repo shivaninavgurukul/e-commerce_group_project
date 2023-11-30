@@ -1,33 +1,26 @@
-"use client";
+"use client"
+
 import React, { useEffect, useState } from 'react';
 
 const Phone = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUrl = 'https://jsonplaceholder.typicode.com/photos';
+    const apiUrl = 'https://makeup-api.herokuapp.com/api/v1/products.json';
 
     const fetchData = async () => {
       try {
         const response = await fetch(apiUrl);
+
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
         const data = await response.json();
-
-        // Limiting to only 5 products and extracting required fields
-        const formattedData = data.slice(0, 5).map(photo => ({
-          title: `Product ${photo.id}`,
-          description: `Description for Product ${photo.id}`,
-          image: photo.url
-        }));
-
-        setProducts(formattedData);
-        setLoading(false);
+        // Limit to only 5 products
+        setProducts(data.slice(180, 185));
       } catch (error) {
         console.error('Error fetching data:', error.message);
-        setLoading(false);
       }
     };
 
@@ -36,25 +29,28 @@ const Phone = () => {
 
   return (
     <div className="product-container">
-      <h1 className="product-title">Best Phones Product
-        <a href='https://www.flipkart.com/mobile-phones-store?fm=neo%2Fmerchandising&iid=M_02bd482a-cf16-442f-99ab-5350925f886b_1_372UD5BXDFYS_MC.ZRQ4DKH28K8J&otracker=hp_rich_navigation_2_1.navigationCard.RICH_NAVIGATION_Mobiles_ZRQ4DKH28K8J&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_2_L0_view-all&cid=ZRQ4DKH28K8J' className='link'>View All</a>
+      <h1 className="product-title">Makeup Product
+        <a href='./Makeup' className='link'>View Link</a>
       </h1>
       <div className="product-list">
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          products.map((product, index) => (
-            <div key={index} className="product-item">
+        {products.map((product) => (
+          <div key={product.id} className="product-item">
+            {product.image_link && (
               <img
-                src={product.image}
-                alt={product.title}
+                src={product.image_link}
+                alt={product.name}
                 className="product-image"
               />
-              <h2 className="product-title">{product.title}</h2>
-              <p className="product-description">{product.description}</p>
-            </div>
-          ))
-        )}
+            )}
+            <h2 className="product-title">{product.name}</h2>
+            <p className="product-brand">Brand: {product.brand}</p>
+            {/* <p className="product-description">
+              {product.description
+                ? `${product.description.substring(0, 150)}...`
+                : 'No description available'}
+            </p> */}
+          </div>
+        ))}
       </div>
     </div>
   );

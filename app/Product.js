@@ -79,9 +79,11 @@ const Product = () => {
 
   return (
     <div className="product-container">
-      <h1 className="product-title">Featured Books
-      <a href='https://www.flipkart.com/search?q=books&sid=bks&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_2_4_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_2_4_na_na_na&as-pos=2&as-type=RECENT&suggestionId=books%7CBooks&requestId=a0372701-7674-4623-92e6-46c362fb11d3&as-searchtext=book' className='link'>View All</a>
-      </h1>
+      
+        <h1 className="product-title">Featured Books
+        <a href='./Books' className='link'>View Link</a>
+        </h1>
+      
       <div className="product-list">
         {books.map((book) => (
           <div key={book.id} className="product-item">

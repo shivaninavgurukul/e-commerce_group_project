@@ -38,7 +38,7 @@ const Clothes = () => {
   return (
     <div className="product-container">
       <h1 className="product-title">Featured Categories
-      <a href='https://www.flipkart.com/clothing-and-accessories/dresses-and-gown/dress/women-dress/pr?sid=clo,odx,maj,jhy&otracker=categorytree&otracker=nmenu_sub_Women_0_Dresses' className='link'>View All</a>
+      <a href='./Electronices' className='link'>View Link</a>
       </h1>
       <div className="product-list">
         {loading ? (

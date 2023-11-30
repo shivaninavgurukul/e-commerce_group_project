@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react';
 
 const Electronics = () => {
@@ -18,7 +19,7 @@ const Electronics = () => {
         const data = await response.json();
 
         // Limit the categories to only 5
-        const formattedData = data.slice(0, 5).map(category => ({
+        const formattedData = data.slice(0, 10).map(category => ({
           id: category.id,
           name: category.name,
           image: category.image
@@ -37,7 +38,7 @@ const Electronics = () => {
 
   return (
     <div className="product-container">
-      <h1 className="product-title">Featured Categories</h1>
+ 
       <div className="product-list">
         {loading ? (
           <p>Loading...</p>
