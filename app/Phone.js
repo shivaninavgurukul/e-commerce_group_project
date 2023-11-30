@@ -37,7 +37,7 @@ const Phone = () => {
   return (
     <div className="product-container">
       <h1 className="product-title">Best Phones Product
-        <a href='/#' className='link'>View Link</a>
+        <a href='https://www.flipkart.com/mobile-phones-store?fm=neo%2Fmerchandising&iid=M_02bd482a-cf16-442f-99ab-5350925f886b_1_372UD5BXDFYS_MC.ZRQ4DKH28K8J&otracker=hp_rich_navigation_2_1.navigationCard.RICH_NAVIGATION_Mobiles_ZRQ4DKH28K8J&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_2_L0_view-all&cid=ZRQ4DKH28K8J' className='link'>View All</a>
       </h1>
       <div className="product-list">
         {loading ? (
