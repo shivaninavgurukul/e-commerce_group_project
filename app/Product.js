@@ -81,7 +81,7 @@ const Product = () => {
     <div className="product-container">
       
         <h1 className="product-title">Featured Books
-        <a href='./Books' className='link'>View Link</a>
+        <a href='./Books' className='link'>View All</a>
         </h1>
       
       <div className="product-list">
