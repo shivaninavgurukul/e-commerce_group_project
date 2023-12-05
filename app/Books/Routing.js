@@ -1,17 +1,17 @@
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import BooksPage from './BooksPage';
+import BookIdComponent from './BookIdComponent';
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Page from "./page";
-import BookId from "./BookId";
-
-function Routing() {
+function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="" element={<Page />} />
-        <Route path="/books/:id" element={<BookId />} />
-      </Routes>
+      <Switch>
+        <Route exact path="/" component={BooksPage} />
+        <Route path="/books/:id" component={BookIdComponent} />
+      </Switch>
     </BrowserRouter>
   );
 }
 
-export default Routing;
+export default App;

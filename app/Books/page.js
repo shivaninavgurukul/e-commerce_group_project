@@ -1,19 +1,22 @@
 "use client"
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import "../globals.css";
-import BookIdComponent from "./BookId"; // Renamed the import to BookIdComponent
+import BookIdComponent from "./BookId";
+import Link from 'next/link';
 
 const BooksPage = () => {
+  const router = useRouter(); // Use useRouter within a functional component
   const [books, setBooks] = useState([]);
+  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
-    const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
-
     const fetchData = async () => {
       try {
+        const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
@@ -29,11 +32,23 @@ const BooksPage = () => {
 
     fetchData();
   }, []);
-  
-  const handleClick = (item) => {
-    // Handle navigation or any other action here
+
+  const handleClick = async (item) => {
     console.log(`Clicked book with ID: ${item.id}`);
-  }
+    try {
+      const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${item.id}`);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setSelectedBook(data);
+      router.push(`/books/${item.id}`); // Use router.push to navigate
+    } catch (error) {
+      console.error('Error fetching book details:', error.message);
+    }
+  };
 
   return (
     <div>
@@ -42,21 +57,20 @@ const BooksPage = () => {
       </div>
       <div className="product-container">
         <div className="product-list">
-          {books?.map((item, index) => {
-            return (
-              <div key={index} onClick={() => handleClick(item)}>
-                <img
-                  src={item.volumeInfo.imageLinks.thumbnail}
-                  alt={item.volumeInfo.title}
-                  className="product-image"
-                />
-              </div>
-            )
-          })}
+          {books?.map((item, index) => (
+            <div key={index} onClick={() => handleClick(item)}>
+              <img
+                src={item.volumeInfo.imageLinks.thumbnail}
+                alt={item.volumeInfo.title}
+                className="product-image"
+              />
+            </div>
+          ))}
         </div>
       </div>
+      {selectedBook && <BookIdComponent book={selectedBook} />}
     </div>
   );
 };
 
-export default BooksPage; // Export the component with the updated name
+export default BooksPage;
