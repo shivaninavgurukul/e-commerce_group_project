@@ -1,6 +1,9 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
+import {useParams} from "react-router-dom";
+
+
 
 const Phone = () => {
   const [products, setProducts] = useState([]);
@@ -27,6 +30,7 @@ const Phone = () => {
     fetchData();
   }, []);
 
+  
   return (
     <div className="product-container">
       <h1 className="product-title">Makeup Product

@@ -1,6 +1,10 @@
-
 "use client";
 import React, { useEffect, useState } from 'react';
+import Navbar from '../Navbar';
+import Link from 'next/link';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import "../globals.css";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -28,6 +32,8 @@ const Books = () => {
   }, []);
 
   return (
+  <div>
+    <Navbar/>
     <div className="product-container">
       <div className="product-list">
         {books.map((book) => (
@@ -52,6 +58,7 @@ const Books = () => {
         ))}
       </div>
     </div>
+  </div>
   );
 };
 
