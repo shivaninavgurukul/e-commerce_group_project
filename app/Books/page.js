@@ -1,19 +1,187 @@
-"use client";
-import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar';
-import Link from 'next/link';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.css'
-import "../globals.css";
+// // "use client"
+// // import { useRouter } from 'next/router';
+// // import React, { useEffect, useState } from 'react';
+// // import Navbar from '../Navbar';
+// // import 'bootstrap/dist/css/bootstrap.min.css';
+// // import 'bootstrap/dist/css/bootstrap.css';
+// // import "../globals.css";
+// // import BookIdComponent from "./BookId";
+// // import Link from 'next/link';
 
-const Books = () => {
+// // const BooksPage = () => {
+// //   const router = useRouter(); // Use useRouter within a functional component
+// //   const [books, setBooks] = useState([]);
+// //   const [selectedBook, setSelectedBook] = useState(null);
+
+// //   useEffect(() => {
+// //     const fetchData = async () => {
+// //       try {
+// //         const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
+// //         const response = await fetch(apiUrl);
+
+// //         if (!response.ok) {
+// //           throw new Error(`HTTP error! Status: ${response.status}`);
+// //         }
+
+// //         const data = await response.json();
+// //         setBooks(data.items ? data.items.slice(0, 10) : []);
+// //       } catch (error) {
+// //         console.error('Error fetching data:', error.message);
+// //       }
+// //     };
+
+// //     fetchData();
+// //   }, []);
+
+// //   const handleClick = async (item) => {
+// //     console.log(`Clicked book with ID: ${item.id}`);
+// //     try {
+// //       const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${item.id}`);
+
+// //       if (!response.ok) {
+// //         throw new Error(`HTTP error! Status: ${response.status}`);
+// //       }
+
+// //       const data = await response.json();
+// //       setSelectedBook(data);
+// //       router.push(`/books/${item.id}`); // Use router.push to navigate
+// //     } catch (error) {
+// //       console.error('Error fetching book details:', error.message);
+// //     }
+// //   };
+
+// //   return (
+// //     <div>
+// //       <div>
+// //         <Navbar />
+// //       </div>
+// //       <div className="product-container">
+// //         <div className="product-list">
+// //           {books?.map((item, index) => (
+// //             <div key={index} onClick={() => handleClick(item)}>
+// //               <img
+// //                 src={item.volumeInfo.imageLinks.thumbnail}
+// //                 alt={item.volumeInfo.title}
+// //                 className="product-image"
+// //               />
+// //             </div>
+// //           ))}
+// //         </div>
+// //       </div>
+// //       {selectedBook && <BookIdComponent book={selectedBook} />}
+// //     </div>
+// //   );
+// // };
+
+// // export default BooksPage;
+
+
+// "use client"
+// import { useEffect, useState } from 'react';
+// import Navbar from '../Navbar';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import '../globals.css';
+// import BookIdComponent from './BookId';
+
+// const BooksPage = () => {
+//   const [books, setBooks] = useState([]);
+//   const [selectedBook, setSelectedBook] = useState(null);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
+//         const response = await fetch(apiUrl);
+
+//         if (!response.ok) {
+//           throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+
+//         const data = await response.json();
+//         setBooks(data.items ? data.items.slice(0, 10) : []);
+//       } catch (error) {
+//         console.error('Error fetching data:', error.message);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   useEffect(() => {
+//     const router = require('next/router').default;
+//     const handleClick = async (item) => {
+//       console.log(`Clicked book with ID: ${item.id}`);
+//       try {
+//         const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${item.id}`);
+
+//         if (!response.ok) {
+//           throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+
+//         const data = await response.json();
+//         setSelectedBook(data);
+//         router.push(`/books/${item.id}`); // Use router.push to navigate
+//       } catch (error) {
+//         console.error('Error fetching book details:', error.message);
+//       }
+//     };
+
+//     document.querySelectorAll('.product-list > div').forEach((item, index) => {
+//       item.addEventListener('click', () => {
+//         const book = books[index];
+//         handleClick(book);
+//       });
+//     });
+
+//     return () => {
+//       document.querySelectorAll('.product-list > div').forEach((item) => {
+//         item.removeEventListener('click', handleClick);
+//       });
+//     };
+//   }, [books]);
+
+//   return (
+//     <div>
+//       <div>
+//         <Navbar />
+//       </div>
+//       <div className="product-container">
+//         <div className="product-list">
+//           {books?.map((item, index) => (
+//             <div key={index}>
+//               <img
+//                 src={item.volumeInfo.imageLinks.thumbnail}
+//                 alt={item.volumeInfo.title}
+//                 className="product-image"
+//               />
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//       {selectedBook && <BookIdComponent book={selectedBook} />}
+//     </div>
+//   );
+// };
+
+// export default BooksPage;
+
+"use client"
+// "use client"
+import { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../globals.css';
+import BookIdComponent from './BookId';
+
+const BooksPage = () => {
   const [books, setBooks] = useState([]);
+  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
-    const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
-
     const fetchData = async () => {
       try {
+        const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
@@ -21,7 +189,6 @@ const Books = () => {
         }
 
         const data = await response.json();
-        // Limit to only 5 books
         setBooks(data.items ? data.items.slice(0, 10) : []);
       } catch (error) {
         console.error('Error fetching data:', error.message);
@@ -31,36 +198,59 @@ const Books = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Import useRouter conditionally to avoid server-side usage
+    const router = require('next/router').default;
+
+    const handleClick = async (item) => {
+      console.log(`Clicked book with ID: ${item.id}`);
+      try {
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${item.id}`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setSelectedBook(data);
+        router.push(`/books/${item.id}`); // Use router.push to navigate
+      } catch (error) {
+        console.error('Error fetching book details:', error.message);
+      }
+    };
+
+    document.querySelectorAll('.product-list > div').forEach((item, index) => {
+      item.addEventListener('click', () => {
+        const book = books[index];
+        handleClick(book);
+      });
+    });
+
+    return () => {
+      document.querySelectorAll('.product-list > div').forEach((item) => {
+        item.removeEventListener('click', handleClick);
+      });
+    };
+  }, [books]);
+
   return (
-  <div>
-    <Navbar/>
-    <div className="product-container">
-      <div className="product-list">
-        {books.map((book) => (
-          <div key={book.id} className="product-item">
-            {book.volumeInfo.imageLinks && (
+    <div>
+      <div className="product-container">
+        <div className="product-list">
+          {books?.map((item, index) => (
+            <div key={index}>
               <img
-                src={book.volumeInfo.imageLinks.thumbnail}
-                alt={book.volumeInfo.title}
+                src={item.volumeInfo.imageLinks.thumbnail}
+                alt={item.volumeInfo.title}
                 className="product-image"
               />
-            )}
-            <h2 className="product-title">{book.volumeInfo.title}</h2>
-            <p className="product-authors">
-              Authors: {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A'}
-            </p>
-            <p className='product-description'>
-              {book.volumeInfo.description
-                ? `${book.volumeInfo.description.substring(0, 150)}...`
-                : 'No description available'}
-            </p>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
+      {selectedBook && <BookIdComponent book={selectedBook} />}
     </div>
-  </div>
   );
 };
 
-export default Books;
-
+export default BooksPage;

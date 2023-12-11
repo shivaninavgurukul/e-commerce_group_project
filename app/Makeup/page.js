@@ -1,7 +1,5 @@
 "use client"
-
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import "../globals.css";
@@ -33,7 +31,6 @@ const Phone = () => {
 
   return (
   <div>
-    <Navbar/>
     <div className="product-container">
       <h1 className="product-title">Makeup Product
      </h1>

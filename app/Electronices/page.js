@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import "../globals.css";
@@ -41,7 +40,6 @@ const Electronics = () => {
 
   return (
     <div>
-       <Navbar/>
     <div className="product-container">
       <div className="product-list">
         {loading ? (
