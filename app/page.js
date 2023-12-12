@@ -1,5 +1,4 @@
 "use client"
-import Navbar from "./Navbar";
 import Home from "./Home";
 import Product from "./Product";
 import Clothes from "./Clothes";
@@ -14,7 +13,10 @@ import Footer from "./Footer"
 const page=()=>{
   return(
     <div>
+<<<<<<< HEAD
     <Navbar/><br />
+=======
+>>>>>>> 455edea6aea1ef7f26141d45bbe7a2e7a16adc25
       <Home/><br />
       <Product/><br/>
       <Clothes/><br/>

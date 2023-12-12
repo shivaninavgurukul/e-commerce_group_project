@@ -32,7 +32,7 @@ const Phone = () => {
   return (
     <div className="product-container">
       <h1 className="product-title">Makeup Product
-        <a href='./Makeup' className='link'>View Link</a>
+        <a href='./Makeup' className='link'>View All</a>
       </h1>
       <div className="product-list">
         {products.map((product) => (

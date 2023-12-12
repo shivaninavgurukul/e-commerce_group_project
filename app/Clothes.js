@@ -38,7 +38,7 @@ const Clothes = () => {
   return (
     <div className="product-container">
       <h1 className="product-title">Featured Categories
-      <a href='./Electronices' className='link'>View Link</a>
+      <a href='./Electronices' className='link'>View All</a>
       </h1>
       <div className="product-list">
         {loading ? (
