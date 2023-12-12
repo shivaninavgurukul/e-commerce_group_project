@@ -8,17 +8,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import "./globals.css";
 
-
+// import BooksPage from "./Books/page";
 import Footer from "./Footer"
+
 const page=()=>{
   return(
     <div>
-      <Navbar/><br />
+    <Navbar/><br />
       <Home/><br />
       <Product/><br/>
       <Clothes/><br/>
+      {/* <BooksPage/> */}
       <Phone/>
-      <Footer/><br />
+      <Footer/><br /> 
     </div>
 
   )
