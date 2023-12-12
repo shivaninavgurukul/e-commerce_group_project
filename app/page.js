@@ -6,6 +6,7 @@ import Phone from "./Phone";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import "./globals.css";
+import Data from "./data.js"
 
 
 import Footer from "./Footer"
@@ -17,6 +18,7 @@ const page=()=>{
       <Clothes/><br/>
       <Phone/>
       <Footer/><br />
+      <Data/>
     </div>
 
   )
