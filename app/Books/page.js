@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 // // "use client"
 // // import { useRouter } from 'next/router';
 // // import React, { useEffect, useState } from 'react';
@@ -169,14 +168,17 @@
 // export default BooksPage;
 
 "use client"
-// "use client"
-import { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import '../globals.css';
-import BookIdComponent from './BookId';
+// import { useEffect, useState } from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import '../globals.css';
+// import BookIdComponent from './BookId';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const BooksPage = () => {
+  const navigate = useNavigate();
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
 
@@ -201,7 +203,6 @@ const BooksPage = () => {
   }, []);
 
   useEffect(() => {
-    // Import useRouter conditionally to avoid server-side usage
     const router = require('next/router').default;
 
     const handleClick = async (item) => {
@@ -215,7 +216,7 @@ const BooksPage = () => {
 
         const data = await response.json();
         setSelectedBook(data);
-        router.push(`/books/${item.id}`); // Use router.push to navigate
+        router.push(`/books/${item.id}`);
       } catch (error) {
         console.error('Error fetching book details:', error.message);
       }
@@ -251,9 +252,9 @@ const BooksPage = () => {
         </div>
       </div>
       {selectedBook && <BookIdComponent book={selectedBook} />}
+      <Route path="/books" component={BooksPage} />
     </div>
   );
 };
 
 export default BooksPage;
->>>>>>> 455edea6aea1ef7f26141d45bbe7a2e7a16adc25
