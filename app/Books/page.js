@@ -167,92 +167,77 @@
 
 // export default BooksPage;
 
-"use client"
-// import { useEffect, useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/css/bootstrap.css';
-// import '../globals.css';
-// import BookIdComponent from './BookId';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-
+"use client";
+import React, { useEffect, useState } from 'react';
 
 const BooksPage = () => {
-  const navigate = useNavigate();
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
-        const response = await fetch(apiUrl);
+    const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+// Inside your fetchData function
+const fetchData = async () => {
+  try {
+    const response = await fetch(apiUrl);
 
-        const data = await response.json();
-        setBooks(data.items ? data.items.slice(0, 10) : []);
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-      }
-    };
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data); // Log the fetched data to investigate any issues
+    setBooks(data.items ? data.items.slice(0, 10) : []);
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+};
+
 
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const router = require('next/router').default;
+  const handleProductClick = (book) => {
+    setSelectedBook(book);
+  };
 
-    const handleClick = async (item) => {
-      console.log(`Clicked book with ID: ${item.id}`);
-      try {
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${item.id}`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setSelectedBook(data);
-        router.push(`/books/${item.id}`);
-      } catch (error) {
-        console.error('Error fetching book details:', error.message);
-      }
-    };
-
-    document.querySelectorAll('.product-list > div').forEach((item, index) => {
-      item.addEventListener('click', () => {
-        const book = books[index];
-        handleClick(book);
-      });
-    });
-
-    return () => {
-      document.querySelectorAll('.product-list > div').forEach((item) => {
-        item.removeEventListener('click', handleClick);
-      });
-    };
-  }, [books]);
+  const handleCloseDetails = () => {
+    setSelectedBook(null);
+  };
 
   return (
-    <div>
-      <div className="product-container">
-        <div className="product-list">
-          {books?.map((item, index) => (
-            <div key={index}>
+    <div className="product-container">
+      <div>
+        {/* <h1 className='category'>Product Category</h1> */}
+        {/* <a className='view' href='viewall'>View All</a> */}
+        {/* <a href='./Books' className='link'>View All</a> */}
+      </div>
+      <div className="product-list">
+        {books.map((book) => (
+          <div key={book.id} className="product-item" onClick={() => handleProductClick(book)}>
+            {book.volumeInfo.imageLinks && (
               <img
-                src={item.volumeInfo.imageLinks.thumbnail}
-                alt={item.volumeInfo.title}
+                src={book.volumeInfo.imageLinks.thumbnail}
+                alt={book.volumeInfo.title}
                 className="product-image"
               />
-            </div>
-          ))}
-        </div>
+            )}
+            <h2 className="product-title">{book.volumeInfo.title}</h2>
+            <p className="product-authors">
+              Authors: {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A'}
+            </p>
+          </div>
+        ))}
       </div>
-      {selectedBook && <BookIdComponent book={selectedBook} />}
-      <Route path="/books" component={BooksPage} />
+      {selectedBook && (
+        <div className="product-details">
+          <h2>{selectedBook.volumeInfo.title}</h2>
+          <p>Authors: {selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'N/A'}</p>
+          {/* Display other details as needed */}
+          <button onClick={handleCloseDetails}>Close Details</button>
+        </div>
+      )}
     </div>
   );
 };
