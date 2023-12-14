@@ -167,25 +167,88 @@
 
 // export default BooksPage;
 
-import React from 'react';
+// <<<<<<< HEAD
+"use client"
+import { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../globals.css';
+// import BookIdComponent from './BookId';
+// =======
+// "use client";
+// import React, { useEffect, useState } from 'react';
+// >>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
 
-const BookDetails = ({ book, handleCloseDetails }) => {
-  if (!book || !book.volumeInfo) {
-    // If the book or its volumeInfo is not available, render a message or handle it accordingly
-    return <div>No details available for this book.</div>;
+const BooksPage = () => {
+  const [books, setBooks] = useState([]);
+  const [selectedBook, setSelectedBook] = useState(null);
+
+  useEffect(() => {
+    const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
+
+// Inside your fetchData function
+const fetchData = async () => {
+  try {
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data); // Log the fetched data to investigate any issues
+    setBooks(data.items ? data.items.slice(0, 10) : []);
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
   }
+};
 
-  const { volumeInfo } = book; // Destructure volumeInfo from book object
+
+    fetchData();
+  }, []);
+
+  const handleProductClick = (book) => {
+    setSelectedBook(book);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedBook(null);
+  };
 
   return (
-    <div className="product-details">
-      <h2>{volumeInfo.title}</h2>
-      <p>Authors: {volumeInfo.authors ? volumeInfo.authors.join(', ') : 'N/A'}</p>
-      {/* Display other details as needed */}
-      <button onClick={handleCloseDetails}>Close Details</button>
+    <div className="product-container">
+      <div>
+        {/* <h1 className='category'>Product Category</h1> */}
+        {/* <a className='view' href='viewall'>View All</a> */}
+        {/* <a href='./Books' className='link'>View All</a> */}
+      </div>
+      <div className="product-list">
+        {books.map((book) => (
+          <div key={book.id} className="product-item" onClick={() => handleProductClick(book)}>
+            {book.volumeInfo.imageLinks && (
+              <img
+                src={book.volumeInfo.imageLinks.thumbnail}
+                alt={book.volumeInfo.title}
+                className="product-image"
+              />
+            )}
+            <h2 className="product-title">{book.volumeInfo.title}</h2>
+            <p className="product-authors">
+              Authors: {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A'}
+            </p>
+          </div>
+        ))}
+      </div>
+      {selectedBook && (
+        <div className="product-details">
+          <h2>{selectedBook.volumeInfo.title}</h2>
+          <p>Authors: {selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'N/A'}</p>
+          {/* Display other details as needed */}
+          <button onClick={handleCloseDetails}>Close Details</button>
+        </div>
+      )}
     </div>
   );
 };
 
-export default BookDetails;
-
+export default BooksPage;

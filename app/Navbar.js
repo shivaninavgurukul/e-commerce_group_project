@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Nav() {
+function Navbar() {
     return (
         <nav className="navbar navbar-light" style={{ backgroundColor: '#3498db', color: '#fff' }}>
             <div className="container-fluid">
@@ -16,6 +16,6 @@ function Nav() {
     );
 }
 
-export default Nav;
+export default Navbar;
 
 
