@@ -1,74 +1,74 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 
-const Product = () => {
-  const [books, setBooks] = useState([]);
-  const [selectedBook, setSelectedBook] = useState(null);
+// const Product = () => {
+//   const [books, setBooks] = useState([]);
+//   const [selectedBook, setSelectedBook] = useState(null);
 
-  useEffect(() => {
-    const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
+//   useEffect(() => {
+//     const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
 
-    const fetchData = async () => {
-      try {
-        const response = await fetch(apiUrl);
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch(apiUrl);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+//         if (!response.ok) {
+//           throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
 
-        const data = await response.json();
-        // Limit to only 5 books
-        setBooks(data.items ? data.items.slice(0, 5) : []);
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-      }
-    };
+//         const data = await response.json();
+//         // Limit to only 5 books
+//         setBooks(data.items ? data.items.slice(0, 5) : []);
+//       } catch (error) {
+//         console.error('Error fetching data:', error.message);
+//       }
+//     };
 
-    fetchData();
-  }, []);
+//     fetchData();
+//   }, []);
 
-  const handleClick = (book) => {
-    setSelectedBook(book);
-  };
+//   const handleClick = (book) => {
+//     setSelectedBook(book);
+//   };
 
-  return (
-    <div className="product-container">
-      <h1 className="product-title">
-        Featured Books
-        <a href="./Books" className="link">
-          View All
-        </a>
-      </h1>
+//   return (
+//     <div className="product-container">
+//       <h1 className="product-title">
+//         Featured Books
+//         <a href="./Books" className="link">
+//           View All
+//         </a>
+//       </h1>
 
-      <div className="product-list">
-        {books.map((book) => (
-          <div key={book.id} className="product-item" onClick={() => handleClick(book)}>
-            {book.volumeInfo.imageLinks && (
-              <img
-                src={book.volumeInfo.imageLinks.thumbnail}
-                alt={book.volumeInfo.title}
-                className="product-image"
-              />
-            )}
-            <h2 className="product-title">{book.volumeInfo.title}</h2>
-            <p className="product-authors">
-              Authors: {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A'}
-            </p>
-          </div>
-        ))}
-      </div>
+//       <div className="product-list">
+//         {books.map((book) => (
+//           <div key={book.id} className="product-item" onClick={() => handleClick(book)}>
+//             {book.volumeInfo.imageLinks && (
+//               <img
+//                 src={book.volumeInfo.imageLinks.thumbnail}
+//                 alt={book.volumeInfo.title}
+//                 className="product-image"
+//               />
+//             )}
+//             <h2 className="product-title">{book.volumeInfo.title}</h2>
+//             <p className="product-authors">
+//               Authors: {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A'}
+//             </p>
+//           </div>
+//         ))}
+//       </div>
 
-      {selectedBook && (
-        <div className="product-details">
-          <h2>{selectedBook.volumeInfo.title}</h2>
-          <p>Authors: {selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'N/A'}</p>
-          {/* Display other details as needed */}
-        </div>
-      )}
-    </div>
-  );
-};
+//       {selectedBook && (
+//         <div className="product-details">
+//           <h2>{selectedBook.volumeInfo.title}</h2>
+//           <p>Authors: {selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'N/A'}</p>
+//           {/* Display other details as needed */}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
 
-export default Product;
+// export default Product;
 
 
 
@@ -135,6 +135,13 @@ export default Product;
 
 // export default Product;
 
+<<<<<<< HEAD
+// import React, { useEffect, useState } from 'react';
+
+// const Product = () => {
+//   const [books, setBooks] = useState([]);
+=======
+
 // import React, { useEffect, useState } from 'react';
 
 // const Product = () => {
@@ -192,3 +199,132 @@ export default Product;
 
 // export default Product;
 
+"use client";
+import React, { useEffect, useState } from 'react';
+// import { BooksPage } from './BooksPage';
+
+const Product = () => {
+  const [books, setBooks] = useState([]);
+  const [selectedBook, setSelectedBook] = useState(null);
+>>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
+
+//   useEffect(() => {
+//     const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
+
+<<<<<<< HEAD
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch(apiUrl);
+
+//         if (!response.ok) {
+//           throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+
+//         const data = await response.json();
+//         // Limit to only 5 books
+//         setBooks(data.items ? data.items.slice(0, 5) : []);
+//       } catch (error) {
+//         console.error('Error fetching data:', error.message);
+//       }
+//     };
+=======
+// Inside your fetchData function
+const fetchData = async () => {
+  try {
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data); // Log the fetched data to investigate any issues
+    setBooks(data.items ? data.items.slice(0, 5) : []);
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+};
+
+>>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
+
+//     fetchData();
+//   }, []);
+
+<<<<<<< HEAD
+//   return (
+//     <div className="product-container">
+      
+//         <h1 className="product-title">Featured Books
+//         <a href='./Books' className='link'>View All</a>
+//         </h1>
+      
+//       <div className="product-list">
+//         {books.map((book) => (
+//           <div key={book.id} className="product-item">
+//             {book.volumeInfo.imageLinks && (
+//               <img
+//                 src={book.volumeInfo.imageLinks.thumbnail}
+//                 alt={book.volumeInfo.title}
+//                 className="product-image"
+//               />
+//             )}
+//             <h2 className="product-title">{book.volumeInfo.title}</h2>
+//             <p className="product-authors">
+//               Authors: {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A'}
+//             </p>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Product;
+
+=======
+  const handleProductClick = (book) => {
+    setSelectedBook(book);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedBook(null);
+  };
+
+  return (
+    <div className="product-container">
+      <div>
+        <h1 className='category'>Product Category</h1>
+        {/* <a className='view' href='viewall'>View All</a> */}
+        <a href='./Books' className='link'>View All</a>
+      </div>
+      <div className="product-list">
+        {books.map((book) => (
+          <div key={book.id} className="product-item" onClick={() => handleProductClick(book)}>
+            {book.volumeInfo.imageLinks && (
+              <img
+                src={book.volumeInfo.imageLinks.thumbnail}
+                alt={book.volumeInfo.title}
+                className="product-image"
+              />
+            )}
+            <h2 className="product-title">{book.volumeInfo.title}</h2>
+            <p className="product-authors">
+              Authors: {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A'}
+            </p>
+          </div>
+        ))}
+      </div>
+      {selectedBook && (
+        <div className="product-details">
+          <h2>{selectedBook.volumeInfo.title}</h2>
+          <p>Authors: {selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'N/A'}</p>
+          {/* Display other details as needed */}
+          <button onClick={handleCloseDetails}>Close Details</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Product;
+>>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
