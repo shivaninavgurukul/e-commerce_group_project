@@ -135,12 +135,12 @@
 
 // export default Product;
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 // import React, { useEffect, useState } from 'react';
 
 // const Product = () => {
 //   const [books, setBooks] = useState([]);
-=======
+// =======
 
 // import React, { useEffect, useState } from 'react';
 
@@ -206,12 +206,12 @@ import React, { useEffect, useState } from 'react';
 const Product = () => {
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
->>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
+// >>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
 
 //   useEffect(() => {
 //     const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=javascript';
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 //     const fetchData = async () => {
 //       try {
 //         const response = await fetch(apiUrl);
@@ -227,7 +227,7 @@ const Product = () => {
 //         console.error('Error fetching data:', error.message);
 //       }
 //     };
-=======
+// =======
 // Inside your fetchData function
 const fetchData = async () => {
   try {
@@ -245,12 +245,12 @@ const fetchData = async () => {
   }
 };
 
->>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
+// >>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
 
 //     fetchData();
 //   }, []);
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 //   return (
 //     <div className="product-container">
       
@@ -281,7 +281,7 @@ const fetchData = async () => {
 
 // export default Product;
 
-=======
+// =======
   const handleProductClick = (book) => {
     setSelectedBook(book);
   };
@@ -327,4 +327,4 @@ const fetchData = async () => {
 };
 
 export default Product;
->>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
+// >>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7

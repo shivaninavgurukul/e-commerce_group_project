@@ -14,11 +14,11 @@ import Footer from "./Footer"
 const page=()=>{
   return(
     <div>
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
       {/* <Navbar/><br /> */}
 =======
       {/* <Navbar/><br/> */}
->>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7
+{/* >>>>>>> db2751004f04337d0ef24ea01c2a37fde6b125e7 */}
       <Home/><br />
       <Product/><br/>
       <Clothes/><br/>
