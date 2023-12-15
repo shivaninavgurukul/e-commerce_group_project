@@ -1,15 +1,14 @@
 
 "use client"
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import "../globals.css";
 import BookIdComponent from "./BookId";
 
 const BooksPage = () => {
-  const router = useRouter(); // Use useRouter within a functional component
+  // const router = useRouter(); // Use useRouter within a functional component
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
 
@@ -53,7 +52,6 @@ const BooksPage = () => {
   return (
     <div>
       <div>
-        <Navbar />
       </div>
       <div className="product-container">
         <div className="product-list">
