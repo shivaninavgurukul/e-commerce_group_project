@@ -46,11 +46,6 @@ const Phone = () => {
             )}
             <h2 className="product-title">{product.name}</h2>
             <p className="product-brand">Brand: {product.brand}</p>
-            {/* <p className="product-description">
-              {product.description
-                ? `${product.description.substring(0, 150)}...`
-                : 'No description available'}
-            </p> */}
           </div>
         ))}
       </div>
