@@ -10,6 +10,7 @@ import "./globals.css";
 // import Data from "./data.js"
 // import BooksPage from "./Books/page";
 import Footer from "./Footer"
+// import App from "./App"
 
 const page=()=>{
   return(
@@ -19,6 +20,7 @@ const page=()=>{
       <Clothes/><br/>
       <Phone/><br/>
       <Footer/><br />
+      {/* <App/> */}
     </div>
 
 
