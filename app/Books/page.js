@@ -2,7 +2,6 @@
 "use client"
 // import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import "../globals.css";

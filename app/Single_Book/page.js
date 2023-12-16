@@ -1,6 +1,10 @@
-"use client"
+// "use client"
 // import React, { useEffect, useState } from 'react';
 // import Link from 'next/link'; // Import Link from next/link
+
+// "use client"
+// import React, { useEffect, useState } from 'react';
+// // import Link from 'next/link'; // Import Link from next/link
 
 // const SingleBook = () => {
 //   const [books, setBooks] = useState([]);
@@ -95,9 +99,8 @@
 
 // export default SingleBook;
 
-
+"use client"
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link'; // Import Link from next/link
 
 const SingleBook = () => {
   const [books, setBooks] = useState([]);
@@ -115,7 +118,7 @@ const SingleBook = () => {
         }
 
         const data = await response.json();
-        const fetchedBooks = data.items ? data.items.slice(0) : [];
+        const fetchedBooks = data.items ? data.items.slice(0, 1) : []; // Only fetching the first book
 
         setBooks(fetchedBooks);
       } catch (error) {
@@ -138,13 +141,30 @@ const SingleBook = () => {
     <div className="product-container">
       <div>
         <h1 className='category'>Books Data</h1>
-        {/* <Link href='/Books'>View All</Link>  */}
       </div>
-
-      <div className="product-list">
-        {books.map((book) => (
-          <div key={book.id} className="product-item" onClick={() => handleProductClick(book)}>
-            <a href={`/Single_Book?id=${book.id}`} passHref>
+      {selectedBook ? (
+        <div className="product-details">
+          <h2>{selectedBook.volumeInfo.title}</h2>
+          <p>Authors: {selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'N/A'}</p>
+          {/* Display other book details as needed */}
+          <button onClick={handleCloseDetails}>Close Details</button>
+          <div className="selected-book-details">
+            <img
+              src={selectedBook.volumeInfo.imageLinks.thumbnail}
+              alt={selectedBook.volumeInfo.title}
+              className="selected-book-image"
+            />
+            <h2 className="selected-book-title">{selectedBook.volumeInfo.title}</h2>
+            <p className="selected-book-authors">
+              Authors: {selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'N/A'}
+            </p>
+            {/* Add more details as needed */}
+          </div>
+        </div>
+      ) : (
+        <div className="product-list">
+          {books.map((book) => (
+            <div key={book.id} className="product-item" onClick={() => handleProductClick(book)}>
               <a>
                 {book.volumeInfo.imageLinks && (
                   <img
@@ -158,17 +178,8 @@ const SingleBook = () => {
                   Authors: {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A'}
                 </p>
               </a>
-            </a>
-          </div>
-        ))}
-      </div>
-
-      {selectedBook && (
-        <div className="product-details">
-          <h2>{selectedBook.volumeInfo.title}</h2>
-          <p>Authors: {selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'N/A'}</p>
-          {/* Display other book details as needed */}
-          <button onClick={handleCloseDetails}>Close Details</button>
+            </div>
+          ))}
         </div>
       )}
     </div>
