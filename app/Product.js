@@ -243,6 +243,7 @@ const Product = () => {
       <div className="product-list">
         {books.map((book) => (
           <div key={book.id} className="product-item" onClick={() => handleProductClick(book)}>
+            <a href="./Single_Book">
             {book.volumeInfo.imageLinks && (
               <img
                 src={book.volumeInfo.imageLinks.thumbnail}
@@ -254,6 +255,7 @@ const Product = () => {
             <p className="product-authors">
               Authors: {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A'}
             </p>
+            </a>
           </div>
         ))}
       </div>
